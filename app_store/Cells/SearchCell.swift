@@ -56,9 +56,8 @@ class SearchCell: UICollectionViewCell {
         return btn
     }()
     
-    lazy var imagesStackView: UIStackView = {
+    fileprivate lazy var imagesStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 12
         return stackView
@@ -71,16 +70,16 @@ class SearchCell: UICollectionViewCell {
             imagesStackView.addArrangedSubview(createDummyImageViews())
         }
         
-        let labelsStackView = UIStackView(arrangedSubviews: [nameLabel, categoryLabel, ratingLabel])
-        labelsStackView.axis = .vertical
+        let infoStackView = UIStackView(arrangedSubviews: [
+                appIconImageView,
+                VerticalStackView(arrangedSubviews: [nameLabel, categoryLabel, ratingLabel]),
+                getButton
+            ])
         
-        let infoStackView = UIStackView(arrangedSubviews: [appIconImageView, labelsStackView, getButton])
         infoStackView.spacing = 12
         infoStackView.alignment = .center
         
-        let overAllStackView = UIStackView(arrangedSubviews: [infoStackView, imagesStackView])
-        overAllStackView.axis = .vertical
-        overAllStackView.spacing = 16
+        let overAllStackView = VerticalStackView(arrangedSubviews: [infoStackView, imagesStackView], spacing: 16)
         
         addSubview(overAllStackView)
         overAllStackView.fillSuperView(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
@@ -100,5 +99,5 @@ class SearchCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
-
+    
 }

@@ -13,6 +13,7 @@
 		8A59F089226B964F003CAD07 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59F088226B964F003CAD07 /* AppsViewController.swift */; };
 		8A59F08D226B9908003CAD07 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59F08C226B9908003CAD07 /* SearchCell.swift */; };
 		8A59F091226BA579003CAD07 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59F090226BA579003CAD07 /* UIView+Anchors.swift */; };
+		8A59F093226BA930003CAD07 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59F092226BA930003CAD07 /* VerticalStackView.swift */; };
 		8AE3B9EC226A4B6C00DE6414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B9EB226A4B6C00DE6414 /* AppDelegate.swift */; };
 		8AE3B9EE226A4B6C00DE6414 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B9ED226A4B6C00DE6414 /* SearchViewController.swift */; };
 		8AE3B9F3226A4B6E00DE6414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3B9F2226A4B6E00DE6414 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		8A59F088226B964F003CAD07 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		8A59F08C226B9908003CAD07 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		8A59F090226BA579003CAD07 /* UIView+Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
+		8A59F092226BA930003CAD07 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		8AE3B9E8226A4B6C00DE6414 /* app_store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app_store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE3B9EB226A4B6C00DE6414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AE3B9ED226A4B6C00DE6414 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				8A59F090226BA579003CAD07 /* UIView+Anchors.swift */,
+				8A59F092226BA930003CAD07 /* VerticalStackView.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				8A59F089226B964F003CAD07 /* AppsViewController.swift in Sources */,
 				8AE3B9EE226A4B6C00DE6414 /* SearchViewController.swift in Sources */,
 				8AE3B9EC226A4B6C00DE6414 /* AppDelegate.swift in Sources */,
+				8A59F093226BA930003CAD07 /* VerticalStackView.swift in Sources */,
 				8A59F083226B9178003CAD07 /* BaseTabBarController.swift in Sources */,
 				8A59F091226BA579003CAD07 /* UIView+Anchors.swift in Sources */,
 			);
