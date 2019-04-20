@@ -1,0 +1,52 @@
+# Fastlane runs swiftlint from one directory above where the Fastfile lives 
+# so make sure all the paths are relative in that regard.
+
+# Find all the available rules by running:
+# swiftlint rules
+whitelist_rules:
+  - unused_closure_parameter
+  - closure_spacing
+  - empty_enum_arguments
+  - fatal_error_message
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - collection_alignment
+  - redundant_string_enum_value
+  - redundant_void_return
+  - return_arrow_whitespace
+  - function_default_parameter_at_end
+  - trailing_newline
+  - identifier_name
+  - unused_import
+  - vertical_whitespace_between_cases
+  - unused_optional_binding
+  - vertical_whitespace
+  - void_return
+  - mark
+  - colon
+  - type_name
+  - custom_rules
+
+included:
+  - app_store
+
+excluded:
+  - Pods
+
+indentation: 4
+
+identifier_name:
+  allowed_symbols: "_"
+  min_length: 3
+  max_length: 
+    warning: 90
+    error: 100
+  excluded:
+    - id
+
+custom_rules:
+  no_objcMembers:
+    name: "@objcMembers"
+    regex: "@objcMembers"
+    message: "Explicitly use @objc on each member you want to expose to Objective-C"
+    severity: error
