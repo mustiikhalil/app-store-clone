@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class OperationsData<T> {
+    var data: T?
+    var error: Error?
+}

@@ -11,6 +11,7 @@ import UIKit
 class SearchViewController: UICollectionViewController {
 
     fileprivate let cellId = "search-cell-id"
+    fileprivate let operationsQueue = OperationQueue()
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
