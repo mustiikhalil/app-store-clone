@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 
 class DelayOperation: BaseOperation {
     
@@ -25,7 +26,10 @@ class DelayOperation: BaseOperation {
         }
         executing(true)
         
+        os_log("Delay operation started", type: .debug)
+        
         timer.setEventHandler { [weak self] in
+            os_log("Delay operation done", type: .debug)
             self?.executing(false)
         }
         timer.schedule(deadline: delay)

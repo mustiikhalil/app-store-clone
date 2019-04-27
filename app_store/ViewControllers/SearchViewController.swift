@@ -26,6 +26,22 @@ class SearchViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         // Do any additional setup after loading the view.
+        let urlRequest = URLRequest(url: URL(string: "https://itunes.apple.com/search?term=instagram&entity=software")!)
+        let networkData = OperationsData<Data>()
+        let result = OperationsData<SearchResults>()
+        let delayOperation = DelayOperation(delay: .now() + .seconds(5))
+        let fetchOperation = FetchOperation(with: urlRequest, result: networkData)
+        let decodeOpration = DecodeOperation(data: networkData, result: result)
+        
+        delayOperation >>> fetchOperation
+        fetchOperation >>> decodeOpration
+        
+        decodeOpration.completionBlock = {
+            print(decodeOpration.result.data?.results.count)
+        }
+        
+        operationsQueue.addOperations([delayOperation, fetchOperation, decodeOpration], waitUntilFinished: false)
+        
     }
     
 }

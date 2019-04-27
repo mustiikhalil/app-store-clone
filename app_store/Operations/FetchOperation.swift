@@ -38,6 +38,8 @@ class FetchOperation: BaseOperation {
             
             os_log("%ld - %@", type: .debug, response?.statusCode ?? -100, self.urlRequest.url?.absoluteString ?? "not a url")
             
+            guard !self.isCancelled else { return }
+            
             if let error = error {
                 self.result.error = error
                 self.executing(false)
@@ -49,6 +51,8 @@ class FetchOperation: BaseOperation {
                 return
             }
             self.result.data = data
+            self.executing(false)
+            
         }.resume()
     }
 }
