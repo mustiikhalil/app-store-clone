@@ -55,6 +55,15 @@ class BaseOperation: Operation {
     }
 }
 
+extension OperationQueue {
+    
+    func cancelAllOperationsWithDependencies() {
+        for operation in operations.reversed() {
+            operation.cancel()
+        }
+    }
+}
+
 extension Operation {
     
     static func >>>(lhs: Operation, rhs: Operation) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		736C52A741A2A66D049BFCAB /* Pods_app_storeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840957B194DE9B8D4EE6D4CA /* Pods_app_storeTests.framework */; };
+		8A225C142287FB02003DD4E9 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A225C132287FB02003DD4E9 /* Client.swift */; };
 		8A500C5D227478B80068023B /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C5C227478B80068023B /* SearchResults.swift */; };
 		8A500C5F2274795B0068023B /* ItunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C5E2274795B0068023B /* ItunesResult.swift */; };
 		8A500C6122747A3F0068023B /* DecodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C6022747A3F0068023B /* DecodeOperation.swift */; };
@@ -54,6 +55,7 @@
 		43E38E06199E2EB642D36C11 /* Pods-app_storeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_storeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app_storeUITests/Pods-app_storeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		820A02BFEBF44ACBF280B5D5 /* Pods_app_store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840957B194DE9B8D4EE6D4CA /* Pods_app_storeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_storeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A225C132287FB02003DD4E9 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		8A500C5C227478B80068023B /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		8A500C5E2274795B0068023B /* ItunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResult.swift; sourceTree = "<group>"; };
 		8A500C6022747A3F0068023B /* DecodeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeOperation.swift; sourceTree = "<group>"; };
@@ -136,6 +138,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8A225C122287FAE8003DD4E9 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				8A225C132287FB02003DD4E9 /* Client.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
 		8A500C5B227478AC0068023B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 		8AE3B9EA226A4B6C00DE6414 /* app_store */ = {
 			isa = PBXGroup;
 			children = (
+				8A225C122287FAE8003DD4E9 /* Client */,
 				8A500C5B227478AC0068023B /* Models */,
 				8AB343EC226BCF6600070851 /* Operations */,
 				8A59F08F226BA567003CAD07 /* extensions */,
@@ -467,6 +478,7 @@
 				8A500C6122747A3F0068023B /* DecodeOperation.swift in Sources */,
 				8A59F08D226B9908003CAD07 /* SearchCell.swift in Sources */,
 				8A59F089226B964F003CAD07 /* AppsViewController.swift in Sources */,
+				8A225C142287FB02003DD4E9 /* Client.swift in Sources */,
 				8AB343F0226BCF8A00070851 /* BaseOperation.swift in Sources */,
 				8AB343F4226BD3A800070851 /* OperationData.swift in Sources */,
 				8AE3B9EE226A4B6C00DE6414 /* SearchViewController.swift in Sources */,

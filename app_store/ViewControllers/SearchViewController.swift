@@ -11,7 +11,25 @@ import UIKit
 class SearchViewController: UICollectionViewController {
 
     fileprivate let cellId = "search-cell-id"
-    fileprivate let operationsQueue = OperationQueue()
+    
+    fileprivate let searchQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "operations-search"
+        return queue
+    }()
+    
+    var result = OperationsData<SearchResults>() {
+        didSet {
+            guard let items = result.data?.results else { return }
+            self.items = items
+        }
+    }
+    
+    var items: [ItunesResult] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -26,22 +44,18 @@ class SearchViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         // Do any additional setup after loading the view.
-        let urlRequest = URLRequest(url: URL(string: "https://itunes.apple.com/search?term=instagram&entity=software")!)
-        let networkData = OperationsData<Data>()
-        let result = OperationsData<SearchResults>()
-        let delayOperation = DelayOperation(delay: .now() + .seconds(5))
-        let fetchOperation = FetchOperation(with: urlRequest, result: networkData)
-        let decodeOpration = DecodeOperation(data: networkData, result: result)
         
-        delayOperation >>> fetchOperation
-        fetchOperation >>> decodeOpration
+        search(url: URLRequest(url: URL(string: "https://itunes.apple.com/search?term=instagram&entity=software")!))
+        search(url: URLRequest(url: URL(string: "https://itunes.apple.com/search?term=facebook&entity=software")!))
         
-        decodeOpration.completionBlock = {
-            print(decodeOpration.result.data?.results.count)
+    }
+    
+    func search(url: URLRequest) {
+        searchQueue.cancelAllOperationsWithDependencies()
+        let operations = Client.shared.search(url: url) { [weak self] (result) in
+            self?.result = result
         }
-        
-        operationsQueue.addOperations([delayOperation, fetchOperation, decodeOpration], waitUntilFinished: false)
-        
+        searchQueue.addOperations(operations, waitUntilFinished: false)
     }
     
 }
@@ -56,7 +70,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
