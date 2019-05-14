@@ -17,7 +17,7 @@ class Client {
         let networkData = OperationsData<Data>()
         let result = OperationsData<SearchResults>()
         
-        let delayOperation = DelayOperation(delay: .now() + .seconds(5))
+        let delayOperation = DelayOperation(delay: .now() + .milliseconds(500))
         let fetchOperation = FetchOperation(with: url, result: networkData)
         let decodeOpration = DecodeOperation(data: networkData, result: result)
         
@@ -32,5 +32,17 @@ class Client {
         
         return [delayOperation, fetchOperation, decodeOpration]
         
+    }
+    
+    func downloadImage(url: URLRequest, completion: @escaping (OperationsData<Data>) -> Void) -> [Operation] {
+        let result = OperationsData<Data>()
+        let fetchOperation = FetchOperation(with: url, result: result)
+        
+        fetchOperation.completionBlock = {
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+        return [fetchOperation]
     }
 }

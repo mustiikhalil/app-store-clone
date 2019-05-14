@@ -12,13 +12,27 @@ class SearchCell: UICollectionViewCell {
     
     fileprivate let imgSize: CGFloat = 64
     
-    fileprivate lazy var appIconImageView: UIImageView = {
-        let imgView = UIImageView()
-        imgView.translatesAutoresizingMaskIntoConstraints = false
-        imgView.backgroundColor = .red
+    var item: ItunesResult? {
+        didSet {
+            guard let item = item else { return }
+            nameLabel.text = item.trackName
+            categoryLabel.text = item.primaryGenreName
+            ratingLabel.text = "Rating: \(item.averageUserRating ?? 0.0)"
+            
+            for index in 0..<imagesStackView.arrangedSubviews.count {
+                if let appImageView = imagesStackView.arrangedSubviews[index] as? AppStoreImageView, index < item.screenshotUrls.count {
+                    appImageView.setImageWith(string: item.screenshotUrls[index])
+                }
+            }
+            
+            appIconImageView.setImageWith(string: item.artworkUrl100)
+        }
+    }
+    
+    fileprivate lazy var appIconImageView: AppStoreImageView = {
+        let imgView = AppStoreImageView()
         imgView.widthAnchor.constraint(equalToConstant: imgSize).isActive = true
         imgView.heightAnchor.constraint(equalToConstant: imgSize).isActive = true
-        imgView.layer.cornerRadius = 12
         return imgView
     }()
     
@@ -39,7 +53,7 @@ class SearchCell: UICollectionViewCell {
     fileprivate let ratingLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = "9.6m"
+        lbl.text = "Rating: 9.6m"
         return lbl
     }()
     
@@ -93,10 +107,25 @@ class SearchCell: UICollectionViewCell {
         
     }
     
-    fileprivate func createDummyImageViews() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+    func clear() {
+        imagesStackView.arrangedSubviews.forEach { (view) in
+            if let appImageView = view as? AppStoreImageView {
+                appImageView.image = nil
+            }
+        }
+        nameLabel.text = nil
+        categoryLabel.text = nil
+        ratingLabel.text = nil
+        appIconImageView.image = nil
+    }
+    
+    fileprivate func createDummyImageViews() -> AppStoreImageView {
+        let imageView = AppStoreImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 8
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
     

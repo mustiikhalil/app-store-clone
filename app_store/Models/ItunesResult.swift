@@ -11,4 +11,7 @@ import Foundation
 struct ItunesResult: Codable {
     let trackName: String
     let primaryGenreName: String
+    let artworkUrl100: String
+    let screenshotUrls: [String]
+    let averageUserRating: Double?
 }

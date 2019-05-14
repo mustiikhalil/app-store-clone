@@ -18,18 +18,22 @@ class SearchViewController: UICollectionViewController {
         return queue
     }()
     
-    var result = OperationsData<SearchResults>() {
-        didSet {
-            guard let items = result.data?.results else { return }
-            self.items = items
-        }
-    }
-    
     var items: [ItunesResult] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
+    
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    
+    fileprivate let enterSearchTermLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = UIFont.boldSystemFont(ofSize: 20)
+        lbl.text = "Please enter a search term"
+        lbl.textAlignment = .center
+        return lbl
+    }()
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -43,19 +47,51 @@ class SearchViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
+        collectionView.addSubview(enterSearchTermLabel)
+        
+        enterSearchTermLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        enterSearchTermLabel.topAnchor.constraint(equalTo: collectionView.topAnchor, constant: 100).isActive = true
         // Do any additional setup after loading the view.
-        
-        search(url: URLRequest(url: URL(string: "https://itunes.apple.com/search?term=instagram&entity=software")!))
-        search(url: URLRequest(url: URL(string: "https://itunes.apple.com/search?term=facebook&entity=software")!))
-        
+        setupSearchBar()
     }
+    
+}
+
+// MARK: - UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
     
     func search(url: URLRequest) {
         searchQueue.cancelAllOperationsWithDependencies()
         let operations = Client.shared.search(url: url) { [weak self] (result) in
-            self?.result = result
+            self?.handleResultsFetched(result: result)
         }
         searchQueue.addOperations(operations, waitUntilFinished: false)
+    }
+    
+    func handleResultsFetched(result: OperationsData<SearchResults>) {
+        if let error = result.error {
+            print(error)
+            return
+        }
+        guard let fetchedResults = result.data else {
+            return
+        }
+        items = fetchedResults.results
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        guard !searchText.isEmpty, searchText != "" else { return }
+        
+        if let url = URL(string: "https://itunes.apple.com/search?term=\(searchText)&entity=software") {
+            search(url: URLRequest(url: url))
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        items = []
+        collectionView.reloadData()
     }
     
 }
@@ -66,14 +102,36 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchCell
+        cell.item = items[indexPath.item]
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchCell
+        cell.clear()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        enterSearchTermLabel.isHidden = items.count != 0
         return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 350)
     }
+    
+}
+
+// MARK: - UI setup
+
+extension SearchViewController {
+
+    fileprivate func setupSearchBar() {
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+    
 }
