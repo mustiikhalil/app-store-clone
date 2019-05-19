@@ -8,14 +8,6 @@
 
 import UIKit
 
-extension UICollectionViewController {
-    
-    convenience init(layout: UICollectionViewFlowLayout) {
-        self.init(collectionViewLayout: layout)
-        self.collectionView.backgroundColor = .white
-    }
-}
-
 class SubAppGroupController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = "sub-app-controller"
