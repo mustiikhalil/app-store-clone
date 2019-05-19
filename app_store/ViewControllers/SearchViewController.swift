@@ -35,18 +35,9 @@ class SearchViewController: UICollectionViewController {
         return lbl
     }()
     
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) had not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .white
+        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.addSubview(enterSearchTermLabel)
         
         enterSearchTermLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true

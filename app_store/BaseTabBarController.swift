@@ -17,9 +17,9 @@ class BaseTabBarController: UITabBarController {
         UINavigationBar.appearance().prefersLargeTitles = true
         
         viewControllers = [
-            createController(SearchViewController(), title: "Search", imageName: "search"),
+            createController(AppsViewController(layout: UICollectionViewFlowLayout()), title: "Apps", imageName: "apps"),
+            createController(SearchViewController(layout: UICollectionViewFlowLayout()), title: "Search", imageName: "search"),
             createController(TodayViewController(), title: "Today", imageName: "today_icon"),
-            createController(AppsViewController(), title: "Apps", imageName: "apps"),
         ]
     }
     

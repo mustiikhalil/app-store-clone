@@ -13,12 +13,12 @@ class AppStoreImageView: UIImageView {
     static var operationQueue = OperationQueue()
     static let imageCache = NSCache<NSString, UIImage>()
     
-    init() {
+    init(cornerRadius: CGFloat = 15) {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = true
-        layer.cornerRadius = 15
+        layer.cornerRadius = cornerRadius
     }
     
     required init?(coder aDecoder: NSCoder) {
