@@ -45,4 +45,24 @@ class Client {
         }
         return [fetchOperation]
     }
+    
+    func fetchData<T: Codable>(url: URLRequest, completion: @escaping (OperationsData<T>) -> Void) -> [Operation] {
+        
+        let networkData = OperationsData<Data>()
+        let result = OperationsData<T>()
+        
+        let fetchOperation = FetchOperation(with: url, result: networkData)
+        let decodeOpration = DecodeOperation(data: networkData, result: result)
+        
+        fetchOperation >>> decodeOpration
+        
+        decodeOpration.completionBlock = {
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+        
+        return [fetchOperation, decodeOpration]
+        
+    }
 }

@@ -29,6 +29,8 @@
 		8AB343F0226BCF8A00070851 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB343EF226BCF8A00070851 /* BaseOperation.swift */; };
 		8AB343F2226BD39600070851 /* DelayOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB343F1226BD39600070851 /* DelayOperation.swift */; };
 		8AB343F4226BD3A800070851 /* OperationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB343F3226BD3A800070851 /* OperationData.swift */; };
+		8AC1763822967434009D03AB /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1763722967434009D03AB /* AppGroup.swift */; };
+		8AC1763A2296743E009D03AB /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC176392296743E009D03AB /* Feed.swift */; };
 		8AE3B9EC226A4B6C00DE6414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B9EB226A4B6C00DE6414 /* AppDelegate.swift */; };
 		8AE3B9EE226A4B6C00DE6414 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3B9ED226A4B6C00DE6414 /* SearchViewController.swift */; };
 		8AE3B9F3226A4B6E00DE6414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3B9F2226A4B6E00DE6414 /* Assets.xcassets */; };
@@ -83,6 +85,8 @@
 		8AB343EF226BCF8A00070851 /* BaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		8AB343F1226BD39600070851 /* DelayOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayOperation.swift; sourceTree = "<group>"; };
 		8AB343F3226BD3A800070851 /* OperationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationData.swift; sourceTree = "<group>"; };
+		8AC1763722967434009D03AB /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		8AC176392296743E009D03AB /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		8AE3B9E8226A4B6C00DE6414 /* app_store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app_store.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE3B9EB226A4B6C00DE6414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AE3B9ED226A4B6C00DE6414 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			children = (
 				8A500C5C227478B80068023B /* SearchResults.swift */,
 				8A500C5E2274795B0068023B /* ItunesResult.swift */,
+				8AC1763722967434009D03AB /* AppGroup.swift */,
+				8AC176392296743E009D03AB /* Feed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -470,7 +476,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\n";
 		};
 		A3D268112580DB601553F033 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -507,7 +513,9 @@
 				8AB343EE226BCF7900070851 /* FetchOperation.swift in Sources */,
 				8A59F087226B9634003CAD07 /* TodayViewController.swift in Sources */,
 				8A500C6122747A3F0068023B /* DecodeOperation.swift in Sources */,
+				8AC1763A2296743E009D03AB /* Feed.swift in Sources */,
 				8A29A572228A39DB00296556 /* AppStoreImageView.swift in Sources */,
+				8AC1763822967434009D03AB /* AppGroup.swift in Sources */,
 				8A59F08D226B9908003CAD07 /* SearchCell.swift in Sources */,
 				8A59F089226B964F003CAD07 /* AppsPageViewController.swift in Sources */,
 				8A225C142287FB02003DD4E9 /* Client.swift in Sources */,

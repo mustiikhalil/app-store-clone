@@ -13,12 +13,20 @@ class AppsPageViewController: UICollectionViewController, UICollectionViewDelega
     private let heightCell: CGFloat = 300
     private let cellId = "apps-view-controller-cell"
     private let headerId = "apps-view-controller-header"
+    private let operationQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .yellow
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(AppsPageHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        let url = URL(string: "https://rss.itunes.apple.com/api/v1/dk/ios-apps/new-games-we-love/all/50/explicit.json")!
+        let urlRequest = URLRequest(url: url)
+        let operations = Client.shared.fetchData(url: urlRequest) { (data: OperationsData<AppGroup>) in
+            print(data.data?.feed.results.count)
+            print(data.error)
+        }
+        operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
