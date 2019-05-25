@@ -63,6 +63,10 @@ class Client {
         }
         
         return [fetchOperation, decodeOpration]
-        
+    }
+    
+    func rssFeedUrl(type: String) -> URLRequest {
+        let url = URL(string: "https://rss.itunes.apple.com/api/v1/dk/ios-apps/\(type)/all/25/explicit.json")!
+        return URLRequest(url: url)
     }
 }

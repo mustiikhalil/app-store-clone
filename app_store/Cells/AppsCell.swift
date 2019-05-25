@@ -12,11 +12,11 @@ class AppsCell: UICollectionViewCell {
     
     fileprivate let imgSize: CGFloat = 64
     
-    var item: ItunesResult? {
+    var item: FeedResults? {
         didSet {
             guard let item = item else { return }
-            nameLabel.text = item.trackName
-            companyLabel.text = item.primaryGenreName
+            nameLabel.text = item.name
+            companyLabel.text = item.artistName
             appIconImageView.setImageWith(string: item.artworkUrl100)
         }
     }

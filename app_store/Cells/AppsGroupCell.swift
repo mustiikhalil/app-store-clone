@@ -10,6 +10,13 @@ import UIKit
 
 class AppsGroupCell: UICollectionViewCell {
     
+    var item: Feed? {
+        didSet {
+            guard let feed = item else { return }
+            titleLabel.text = feed.title
+            appGroupController.items = feed.results
+        }
+    }
     lazy var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		736C52A741A2A66D049BFCAB /* Pods_app_storeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840957B194DE9B8D4EE6D4CA /* Pods_app_storeTests.framework */; };
 		8A225C142287FB02003DD4E9 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A225C132287FB02003DD4E9 /* Client.swift */; };
+		8A27BD0C2299633F0063502C /* AppPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27BD0B2299633F0063502C /* AppPageViewModel.swift */; };
+		8A27BD0F229972D00063502C /* UpdateUIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27BD0E229972D00063502C /* UpdateUIOperation.swift */; };
 		8A29A572228A39DB00296556 /* AppStoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29A571228A39DB00296556 /* AppStoreImageView.swift */; };
 		8A500C5D227478B80068023B /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C5C227478B80068023B /* SearchResults.swift */; };
 		8A500C5F2274795B0068023B /* ItunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C5E2274795B0068023B /* ItunesResult.swift */; };
@@ -65,6 +67,8 @@
 		820A02BFEBF44ACBF280B5D5 /* Pods_app_store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840957B194DE9B8D4EE6D4CA /* Pods_app_storeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_storeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A225C132287FB02003DD4E9 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		8A27BD0B2299633F0063502C /* AppPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPageViewModel.swift; sourceTree = "<group>"; };
+		8A27BD0E229972D00063502C /* UpdateUIOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIOperation.swift; sourceTree = "<group>"; };
 		8A29A571228A39DB00296556 /* AppStoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreImageView.swift; sourceTree = "<group>"; };
 		8A500C5C227478B80068023B /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		8A500C5E2274795B0068023B /* ItunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResult.swift; sourceTree = "<group>"; };
@@ -164,6 +168,14 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
+		8A27BD0D229966680063502C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8A27BD0B2299633F0063502C /* AppPageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		8A29A575228A3D8C00296556 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +236,7 @@
 				8AB343F1226BD39600070851 /* DelayOperation.swift */,
 				8AB343F3226BD3A800070851 /* OperationData.swift */,
 				8A500C6022747A3F0068023B /* DecodeOperation.swift */,
+				8A27BD0E229972D00063502C /* UpdateUIOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -253,6 +266,7 @@
 		8AE3B9EA226A4B6C00DE6414 /* app_store */ = {
 			isa = PBXGroup;
 			children = (
+				8A27BD0D229966680063502C /* ViewModels */,
 				8A29A575228A3D8C00296556 /* Components */,
 				8A225C122287FAE8003DD4E9 /* Client */,
 				8A500C5B227478AC0068023B /* Models */,
@@ -476,7 +490,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		A3D268112580DB601553F033 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -516,6 +530,7 @@
 				8AC1763A2296743E009D03AB /* Feed.swift in Sources */,
 				8A29A572228A39DB00296556 /* AppStoreImageView.swift in Sources */,
 				8AC1763822967434009D03AB /* AppGroup.swift in Sources */,
+				8A27BD0C2299633F0063502C /* AppPageViewModel.swift in Sources */,
 				8A59F08D226B9908003CAD07 /* SearchCell.swift in Sources */,
 				8A59F089226B964F003CAD07 /* AppsPageViewController.swift in Sources */,
 				8A225C142287FB02003DD4E9 /* Client.swift in Sources */,
@@ -524,6 +539,7 @@
 				8AB343F4226BD3A800070851 /* OperationData.swift in Sources */,
 				8AE3B9EE226A4B6C00DE6414 /* SearchViewController.swift in Sources */,
 				8AE3B9EC226A4B6C00DE6414 /* AppDelegate.swift in Sources */,
+				8A27BD0F229972D00063502C /* UpdateUIOperation.swift in Sources */,
 				8A937A0E2291B66F0008C5ED /* UICollectionViewController.swift in Sources */,
 				8A937A082291A99C0008C5ED /* AppsCell.swift in Sources */,
 				8A59F093226BA930003CAD07 /* VerticalStackView.swift in Sources */,
