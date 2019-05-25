@@ -35,33 +35,35 @@ class FetchOperation: BaseOperation {
             executing(false)
             return
         }
-        os_log("%@ - %@", type: .debug, urlRequest.httpMethod ?? "", self.urlRequest.url?.absoluteString ?? "not a url")
+        os_log("%@ - %@", type: .debug, urlRequest.httpMethod ?? "", urlRequest.url?.absoluteString ?? "not a url")
         
-        URLSession.shared.dataTask(with: urlRequest) { (data, urlResponse, error) in
+        URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
             let response = urlResponse as? HTTPURLResponse
-            
-            os_log("%ld - %@", type: .debug, response?.statusCode ?? -100, self.urlRequest.url?.absoluteString ?? "not a url")
-            
-            guard !self.isCancelled else {
-                self.executing(false)
-                return
-            }
-            
-            if let error = error {
-                self.result.error = error
-                self.executing(false)
-                return
-            }
-            guard let data = data, response?.statusCode == 200 else {
-                self.result.error = AppStoreError.networkError(response?.statusCode)
-                self.executing(false)
-                return
-            }
-            
-            self.result.data = data
-            self.executing(false)
-            
+            os_log("%ld - %@", type: .debug, response?.statusCode ?? -100, self?.urlRequest.url?.absoluteString ?? "not a url")
+            self?.handleReturnedData(data: data, response: response, error: error)
         }.resume()
+    }
+    
+    func handleReturnedData(data: Data?, response: HTTPURLResponse?, error: Error?) {
+        guard !isCancelled else {
+            executing(false)
+            return
+        }
+        
+        if let error = error {
+            result.error = error
+            executing(false)
+            return
+        }
+        guard let data = data, response?.statusCode == 200 else {
+            result.error = AppStoreError.networkError(response?.statusCode)
+            executing(false)
+            return
+        }
+        
+        result.data = data
+        executing(false)
+        
     }
 }
 

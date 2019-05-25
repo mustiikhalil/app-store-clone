@@ -48,12 +48,15 @@ class AppsPageViewController: UICollectionViewController {
         activityIndicator.startAnimating()
         refreshOperation.completionBlock = { [weak self] in
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.groups = self.orderedGroup.filter { $0.appGroup != nil }
-                self.activityIndicator.stopAnimating()
-                self.collectionView.reloadData()
+                self?.refreshView()
             }
         }
+    }
+    
+    func refreshView() {
+        groups = orderedGroup.filter { $0.appGroup != nil }
+        activityIndicator.stopAnimating()
+        collectionView.reloadData()
     }
 }
 
