@@ -94,8 +94,8 @@ extension AppsPageViewController: UICollectionViewDelegateFlowLayout {
 extension AppsPageViewController {
     
     func fetchData(appPageViewModel: AppsPageViewModel) {
-        let operations = Client.shared.fetchData(url: Client.shared.rssFeedUrl(type: appPageViewModel.modelType.id)) { [weak self] (data: OperationsData<AppGroup>) in
-            self?.setupItems(appPageViewModel: appPageViewModel, withItem: data)
+        let operations = Client.shared.fetchData(url: Client.shared.rssFeedUrl(type: appPageViewModel.modelType.id)) { [weak self]  (result: Result<AppGroup, Error>) in
+            self?.setupItems(appPageViewModel: appPageViewModel, result: result)
         }
         operationQueue.addOperations(operations, waitUntilFinished: false)
         
@@ -106,13 +106,14 @@ extension AppsPageViewController {
         }
     }
     
-    func setupItems(appPageViewModel: AppsPageViewModel, withItem item: OperationsData<AppGroup>) {
-        if let error = item.error {
+    func setupItems(appPageViewModel: AppsPageViewModel, result: Result<AppGroup, Error>) {
+        switch result {
+        case .failure(let error):
             print(error)
-            return
+            
+        case .success(let appGroup):
+            appPageViewModel.appGroup = appGroup
         }
-        guard let appGroup = item.data else { return }
-        appPageViewModel.appGroup = appGroup
     }
     
 }

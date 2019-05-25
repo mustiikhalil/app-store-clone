@@ -22,6 +22,7 @@ class SubAppGroupController: UICollectionViewController, UICollectionViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.decelerationRate = .fast
         collectionView.register(AppsCell.self, forCellWithReuseIdentifier: cellId)
     }
 
@@ -37,7 +38,7 @@ class SubAppGroupController: UICollectionViewController, UICollectionViewDelegat
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height: CGFloat = view.frame.height - (spacing * 2) - (bottomTopInset * 2)
-        return .init(width: view.frame.width - 32, height: height / 3)
+        return .init(width: view.frame.width - 48, height: height / 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

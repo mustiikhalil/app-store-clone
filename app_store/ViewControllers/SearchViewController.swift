@@ -54,21 +54,21 @@ extension SearchViewController: UISearchBarDelegate {
     
     func search(url: URLRequest) {
         searchQueue.cancelAllOperationsWithDependencies()
-        let operations = Client.shared.search(url: url) { [weak self] (result) in
+        let operations = Client.shared.search(url: url) { [weak self] (result: Result<SearchResults, Error>) in
             self?.handleResultsFetched(result: result)
         }
         searchQueue.addOperations(operations, waitUntilFinished: false)
     }
     
-    func handleResultsFetched(result: OperationsData<SearchResults>) {
-        if let error = result.error {
-            print(error)
-            return
+    func handleResultsFetched(result: Result<SearchResults, Error>) {
+        
+        switch result {
+        case .failure(let err):
+            print(err)
+            
+        case .success(let searchResults):
+            items = searchResults.results
         }
-        guard let fetchedResults = result.data else {
-            return
-        }
-        items = fetchedResults.results
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

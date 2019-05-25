@@ -26,9 +26,7 @@ class AppsGroupCell: UICollectionViewCell {
     }()
     
     lazy var appGroupController: SubAppGroupController = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let controller = SubAppGroupController(layout: layout)
+        let controller = SubAppGroupController(layout: SnappingLayout())
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         return controller
     }()

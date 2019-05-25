@@ -11,9 +11,7 @@ import UIKit
 class AppsPageHeaderCell: UICollectionReusableView {
     
     lazy var appHorizantalController: AppsHeaderViewController = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let controller = AppsHeaderViewController(layout: layout)
+        let controller = AppsHeaderViewController(layout: SnappingLayout())
         return controller
     }()
     

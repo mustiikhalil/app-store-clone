@@ -12,10 +12,10 @@ class Client {
     
     static var shared = Client()
     
-    func search(url: URLRequest, completion: @escaping (OperationsData<SearchResults>) -> Void) -> [Operation] {
+    func search<T: Codable>(url: URLRequest, completion: @escaping (Result<T, Error>) -> Void) -> [Operation] {
         
         let networkData = OperationsData<Data>()
-        let result = OperationsData<SearchResults>()
+        let result = OperationsData<T>()
         
         let delayOperation = DelayOperation(delay: .now() + .milliseconds(500))
         let fetchOperation = FetchOperation(with: url, result: networkData)
@@ -25,8 +25,13 @@ class Client {
         fetchOperation >>> decodeOpration
         
         decodeOpration.completionBlock = {
-            DispatchQueue.main.async {
-                completion(result)
+            if let error = result.error {
+                completion(.failure(error))
+                return
+            }
+            if let data = result.data {
+                completion(.success(data))
+                return
             }
         }
         
@@ -46,7 +51,7 @@ class Client {
         return [fetchOperation]
     }
     
-    func fetchData<T: Codable>(url: URLRequest, completion: @escaping (OperationsData<T>) -> Void) -> [Operation] {
+    func fetchData<T: Codable>(url: URLRequest, completion: @escaping (Result<T, Error>) -> Void) -> [Operation] {
         
         let networkData = OperationsData<Data>()
         let result = OperationsData<T>()
@@ -57,8 +62,13 @@ class Client {
         fetchOperation >>> decodeOpration
         
         decodeOpration.completionBlock = {
-            DispatchQueue.main.async {
-                completion(result)
+            if let error = result.error {
+                completion(.failure(error))
+                return
+            }
+            if let data = result.data {
+                completion(.success(data))
+                return
             }
         }
         

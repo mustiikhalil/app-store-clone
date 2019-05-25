@@ -11,6 +11,7 @@
 		8A225C142287FB02003DD4E9 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A225C132287FB02003DD4E9 /* Client.swift */; };
 		8A27BD0C2299633F0063502C /* AppPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27BD0B2299633F0063502C /* AppPageViewModel.swift */; };
 		8A27BD0F229972D00063502C /* UpdateUIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27BD0E229972D00063502C /* UpdateUIOperation.swift */; };
+		8A27BD112299A0470063502C /* SnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27BD102299A0470063502C /* SnappingLayout.swift */; };
 		8A29A572228A39DB00296556 /* AppStoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29A571228A39DB00296556 /* AppStoreImageView.swift */; };
 		8A500C5D227478B80068023B /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C5C227478B80068023B /* SearchResults.swift */; };
 		8A500C5F2274795B0068023B /* ItunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A500C5E2274795B0068023B /* ItunesResult.swift */; };
@@ -69,6 +70,7 @@
 		8A225C132287FB02003DD4E9 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		8A27BD0B2299633F0063502C /* AppPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPageViewModel.swift; sourceTree = "<group>"; };
 		8A27BD0E229972D00063502C /* UpdateUIOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIOperation.swift; sourceTree = "<group>"; };
+		8A27BD102299A0470063502C /* SnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingLayout.swift; sourceTree = "<group>"; };
 		8A29A571228A39DB00296556 /* AppStoreImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreImageView.swift; sourceTree = "<group>"; };
 		8A500C5C227478B80068023B /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		8A500C5E2274795B0068023B /* ItunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResult.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				8AE3B9F4226A4B6E00DE6414 /* LaunchScreen.storyboard */,
 				8AE3B9F7226A4B6E00DE6414 /* Info.plist */,
 				8AE3B9F2226A4B6E00DE6414 /* Assets.xcassets */,
+				8A27BD102299A0470063502C /* SnappingLayout.swift */,
 			);
 			path = app_store;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				8A500C5D227478B80068023B /* SearchResults.swift in Sources */,
 				8AB343F2226BD39600070851 /* DelayOperation.swift in Sources */,
 				8A59F083226B9178003CAD07 /* BaseTabBarController.swift in Sources */,
+				8A27BD112299A0470063502C /* SnappingLayout.swift in Sources */,
 				8A59F091226BA579003CAD07 /* UIView+Anchors.swift in Sources */,
 				8A937A062291A42F0008C5ED /* SubAppGroupController.swift in Sources */,
 			);
