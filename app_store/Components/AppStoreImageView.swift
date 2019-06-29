@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iTunesClient
 
 class AppStoreImageView: UIImageView {
     
