@@ -1,9 +1,9 @@
 PODS:
-  - iTunesClient (1.1.0)
-  - SwiftLint (0.31.0)
+  - iTunesClient (1.1.7)
+  - SwiftLint (0.33.0)
 
 DEPENDENCIES:
-  - iTunesClient (from `https://github.com/mustiikhalil/iTunesClient/`)
+  - iTunesClient (from `https://gitlab.com/mustiikhalil/iTunesClient/`)
   - SwiftLint
 
 SPEC REPOS:
@@ -12,17 +12,17 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   iTunesClient:
-    :git: https://github.com/mustiikhalil/iTunesClient/
+    :git: https://gitlab.com/mustiikhalil/iTunesClient/
 
 CHECKOUT OPTIONS:
   iTunesClient:
-    :commit: 43fd395dae55c450f59c24a797b7116555833e8d
-    :git: https://github.com/mustiikhalil/iTunesClient/
+    :commit: a921185f1ae40af27a3339acf7fd7d5935fb0925
+    :git: https://gitlab.com/mustiikhalil/iTunesClient/
 
 SPEC CHECKSUMS:
-  iTunesClient: 32b4da4726ba943031e6a98279e6a648ac520815
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  iTunesClient: 6cf2fb00bdebe75e6cfb0364304684446a9acb8c
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: f260034e3318a4a7da164e4c0fd2afa82159d88b
+PODFILE CHECKSUM: cee1df549e37ed44a4d75ba871354700ec926913
 
 COCOAPODS: 1.7.2

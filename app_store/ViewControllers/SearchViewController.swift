@@ -21,7 +21,9 @@ class SearchViewController: UICollectionViewController {
     
     var items: [ItunesResult] = [] {
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
