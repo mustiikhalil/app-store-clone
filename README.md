@@ -2,7 +2,8 @@ This is an implementation for the app store that is running on the itunes api th
 
 Please do run `pod install` and `brew install swiftlint` before opening the project since i am using `swiftlint`
 
-##NOTE:
+## NOTE:
+
 The podfile contains a private repository on gitlab, which was made for testing reasons. Please change it to the following:
 
 `pod 'iTunesClient', :git => 'https://github.com/mustiikhalil/iTunesClient/'`
