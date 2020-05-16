@@ -2,6 +2,10 @@ This is an implementation for the app store that is running on the itunes api th
 
 Please do run `pod install` and `brew install swiftlint` before opening the project since i am using `swiftlint`
 
+##NOTE:
+The podfile contains a private repository on gitlab, which was made for testing reasons. Please change it to the following:
+
+`pod 'iTunesClient', :git => 'https://github.com/mustiikhalil/iTunesClient/'`
 
 The application is using operations to handle all the jobs the applications does, where all of the operations created extend the following class `BaseOperation`
 ``` swift
